@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 //By using and accessing this material you agree to the terms of the Sample Code
-//License Agreement found here. If you do not agree you may not access 
+//License Agreement found here. If you do not agree you may not access
 //or otherwise use this information.
 //-----------------------------------------------------------------------------
 // Module Notes:
@@ -35,7 +35,7 @@
 #include "CANTxManager.h"
 #include "CANRxManager.h"
 #include "NVM.h"
-
+#include "MimePassthrough.h"
 //-----------------------------------------------------------------------------
 // Macros
 //-----------------------------------------------------------------------------

@@ -31,7 +31,7 @@
 
 #define STATE_MACHINE_MAX_NUM   20
 
-#define SM_LOOPS_UNTIL_DELAY	2
+#define SM_LOOPS_UNTIL_DELAY	4
 
 //-----------------------------------------------------------------------------
 // Module variables
@@ -104,7 +104,7 @@ void SM_Run(void)
 			pfnCurrent(pSM->fChanged);
 			if (pfnCurrent != pSM->pfnState) // state has changed
 			{
-				// Set the changed flag so that initialisation can be done in the next state if necessary.
+				// Set the changed flag so that initialization can be done in the next state if necessary.
 				pSM->fChanged = true;
 			}
 			else // State remained the same
@@ -120,7 +120,7 @@ void SM_Run(void)
 			iLoopsUntilDelay = SM_LOOPS_UNTIL_DELAY;
 
 			t.tv_sec = 0;
-			t.tv_usec = 4000;
+			t.tv_usec = 2000;
 			select(0, NULL, NULL, NULL, &t);	// 4000us delay (will block this process and let others run)
 		}
 	}

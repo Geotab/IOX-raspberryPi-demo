@@ -46,6 +46,14 @@ typedef struct __attribute__((packed))
 }
 tGenericDataRecord;
 
+typedef struct __attribute__((packed))
+{
+	uint8_t bConnected;
+	uint16_t usDataId;
+	uint16_t usFlags;
+}
+tExternalDeviceConnectionStatus;
+
 //-----------------------------------------------------------------------------
 // Macros
 //-----------------------------------------------------------------------------

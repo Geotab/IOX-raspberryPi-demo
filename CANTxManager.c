@@ -296,6 +296,24 @@ void CANTxManager_SendWrappedRxDataPacket(uint8_t * pbData, uint8_t bLength)
 		CANTxManager_SendIoxInformationStatus(IOX_STATUS_PACKET_WRAPPER, &bEndOfPacket, sizeof(bEndOfPacket));
 }
 
+
+//-----------------------------------------------------------------------------
+// Build and send ExternalDeviceConnected to the GO
+//-----------------------------------------------------------------------------
+void CANTxManager_SendExternalDeviceConnected(uint16_t usDeviceID, uint16_t usFlags, uint8_t bConnected)
+{
+	IOExpanderMsg_t Msg;
+	tExternalDeviceConnectionStatus Record;
+
+	Record.bConnected = bConnected;
+	Record.usDataId = usDeviceID;
+	Record.usFlags = usFlags;
+
+	MB_SingleFrameLogData(&Msg, SINGLE_FRAME_DATA_EXTERNAL_DEVICE_CONNECTION_STATUS, (uint8_t *)&Record, sizeof(Record));
+	CANTxManager_AddMessage(&Msg);
+}
+
+
 // ****************************************************************
 // *********************** STATIC METHODS *************************
 // ****************************************************************

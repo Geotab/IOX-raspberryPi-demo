@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 //By using and accessing this material you agree to the terms of the Sample Code
-//License Agreement found here. If you do not agree you may not access 
+//License Agreement found here. If you do not agree you may not access
 //or otherwise use this information.
 //-----------------------------------------------------------------------------
 #ifndef IOExpander_H
@@ -50,7 +50,6 @@
 #define MSG_ID_GO_STATUS_INFORMATION			0x26
 #define MSG_ID_GO_MULTIFRAME_DATA     			0x27
 #define MSG_ID_APPLICATION_SPECIFIC_DATA		0x1C
-
 // ************************************************************
 
 // ********************** IOX Types ***************************
@@ -64,6 +63,8 @@
 #define IOX_HARDWARE_VERSION_TEST		1
 
 // ************************************************************
+
+#define EXTERNAL_DEVICE_TEST					4208	// Used for development and examples so as not to impact data mining
 
 //-----------------------------------------------------------------------------
 // User defined types

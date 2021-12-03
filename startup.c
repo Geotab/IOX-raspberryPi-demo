@@ -26,6 +26,7 @@
 #include "PRNG.h"
 #include "IOControl.h"
 #include "InfoTable.h"
+#include "MimePassthrough.h"
 #include <stdio.h>
 //-----------------------------------------------------------------------------
 // Macros
@@ -46,7 +47,7 @@ tIOX gIox; 			// extern lives in ioexpander.h
 //-----------------------------------------------------------------------------
 
 static void Startup_SetHardwareDependentTypes(void);
-
+static void Startup_SetActivePeripherals(void);
 //-----------------------------------------------------------------------------
 // Module constants
 //-----------------------------------------------------------------------------
@@ -82,6 +83,8 @@ void Startup(void)
 
 	CANTxManager_Init();
 
+	Startup_SetActivePeripherals();
+
 }
 
 // ****************************************************************
@@ -92,6 +95,13 @@ static void Startup_SetHardwareDependentTypes(void)
 {
 	gIox.bIoxType = IOX_TYPE_TEST;
 	gIox.bHardwareVersion = IOX_HARDWARE_VERSION_TEST;
+}
+
+
+// Use types to determine what functions should be available
+static void Startup_SetActivePeripherals(void)
+{
+	SM_Add(ThirdParty_ServiceComs);
 }
 
 // End of file

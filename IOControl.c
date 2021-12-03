@@ -19,7 +19,7 @@
 #include "InfoTable.h"
 #include "can.h"
 #include <stdio.h>
-
+#include "MimePassthrough.h"
 //-----------------------------------------------------------------------------
 // Macros
 //-----------------------------------------------------------------------------
@@ -285,17 +285,23 @@ void IOControl_TxHandler(IOExpanderMsg_t * Msg)
  */
 void IOControl_ApplicationSpecificHandler(IOExpanderMsg_t * IOExpanderMsg)
 {
+	uint8_t bType = IOExpanderMsg->abData[0];
 
 	printf("Received message_id = 0x%x: Application Specific Data from GO\n", MSG_ID_APPLICATION_SPECIFIC_DATA);
 
-	//Print modem transmission result
-	if(IOExpanderMsg->abData[1] == 0x01)
+	if (bType == MODEM_TRANSMISSION_RESULT)
 	{
-		printf("Modem transmission result - Accepted\n");
-	}
-	else if(IOExpanderMsg->abData[1] == 0x00)
-	{
-		printf("Modem transmission result - Rejected\n");
+		ThirdParty_SetTransmissionStatus(IOExpanderMsg->abData[1]);
+
+		//Print modem transmission result
+		if(IOExpanderMsg->abData[1] == 0x01)
+		{
+			printf("Modem transmission result - Accepted\n");
+		}
+		else if(IOExpanderMsg->abData[1] == 0x00)
+		{
+			printf("Modem transmission result - Rejected\n");
+		}
 	}
 
 }
