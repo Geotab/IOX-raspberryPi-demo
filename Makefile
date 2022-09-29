@@ -7,7 +7,7 @@ CC = gcc
 
 TARGET = iox_can_player
 
-OBJ = main.o can.o CANRxManager.o CANTxManager.o InfoTable.o IOControl.o MessageBuilder.o NVM.o PRNG.o startup.o statemachine.o ticktimer.o
+OBJ = main.o can.o CANRxManager.o CANTxManager.o InfoTable.o IOControl.o MessageBuilder.o NVM.o PRNG.o startup.o statemachine.o ticktimer.o MimePassthrough.o
 
 all : $(TARGET)
 
